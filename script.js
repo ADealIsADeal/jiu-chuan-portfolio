@@ -371,10 +371,12 @@ const cityFeatureRecords = geoFeatures.flatMap((provinceFeature) => {
   return (cityFeatures.length ? cityFeatures : [provinceFeature]).map((feature) => ({
     feature,
     province,
+    isSouthSea: /南海|三沙|西沙|中沙|南沙|永暑/.test(feature.properties?.name || "") ||
+      (!feature.properties?.name && province.name === "南海诸岛"),
   }));
 });
 const mapFeatures = cityFeatureRecords
-  .filter(({ province }) => province.name !== "南海诸岛")
+  .filter(({ province, isSouthSea }) => province.name !== "南海诸岛" && !isSouthSea)
   .map(({ feature }) => feature);
 const geoBounds = getGeoBounds(mapFeatures.length ? mapFeatures : geoFeatures);
 const geoCenter = {
@@ -595,7 +597,7 @@ function renderCityMap(province, detail, fallbackFeature) {
   cityView.targetZoom = 1;
 }
 
-cityFeatureRecords.forEach(({ feature, province }) => {
+cityFeatureRecords.forEach(({ feature, province, isSouthSea }) => {
   const shapes = createProvinceShapes(feature.geometry);
   if (!shapes.length) return;
 
@@ -617,7 +619,7 @@ cityFeatureRecords.forEach(({ feature, province }) => {
     targetZ: 0,
   };
 
-  if (province.name === "南海诸岛") {
+  if (isSouthSea || province.name === "南海诸岛") {
     mesh.position.set(3.35, -2.55, 0);
     mesh.scale.setScalar(0.52);
   }
