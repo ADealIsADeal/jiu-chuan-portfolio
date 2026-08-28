@@ -641,10 +641,12 @@ h3 {
 
 .map-stage {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+  grid-template-columns: 1fr;
   gap: 26px;
   align-items: stretch;
 }
+
+.place-panel { display: none; }
 
 .china-map {
   position: relative;

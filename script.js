@@ -629,9 +629,9 @@ cityFeatureRecords.forEach(({ feature, province, isSouthSea }) => {
 
   const [cx, cy] = provinceCenter(feature);
   const label = createTextSprite(normalizePlaceName(cityName), isVisited ? "#f8fcff" : "#8fa2ab", {
-    fontSize: 27,
-    width: 0.62,
-    height: 0.2,
+    fontSize: 34,
+    width: 0.76,
+    height: 0.25,
   });
   label.position.set(cx, cy - 0.1, 0.62);
   label.visible = false;
