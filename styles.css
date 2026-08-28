@@ -1038,3 +1038,89 @@ nav a { border-radius: 10px; }
     transition-duration: 1ms !important;
   }
 }
+
+/* Hero composition: clean exhibition card + route profile */
+.hero-stage {
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  gap: 20px;
+  align-content: center;
+}
+.hero-media {
+  width: 100%;
+  height: 58vh;
+  min-height: 390px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: #0a151b;
+}
+.hero-media .hero-cg {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  transform: scale(1.02);
+  opacity: 1;
+}
+.hero-media .hero-copy {
+  position: static;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 18px 26px;
+  align-items: end;
+  padding: 0;
+  text-align: left;
+  text-shadow: none;
+}
+.hero-media .hero-copy h1 {
+  position: static;
+  grid-row: span 2;
+  margin: 0;
+  font-size: clamp(54px, 7vw, 92px);
+}
+.hero-media .hero-copy > .eyebrow {
+  position: static;
+  margin: 0;
+  color: #b8ff3d;
+  font-size: 10px;
+}
+.hero-media .hero-copy .hero-line {
+  position: static;
+  max-width: 440px;
+  margin: 0;
+  color: #f3f7fb;
+  font-size: clamp(17px, 1.8vw, 24px);
+  font-weight: 650;
+  text-shadow: none;
+}
+.hero-media .hero-copy .hero-status {
+  position: absolute;
+  left: 32px;
+  bottom: 24px;
+  max-width: 420px;
+  margin: 0;
+  color: #fff;
+  font-size: 11px;
+  text-shadow: 0 2px 14px rgba(0,0,0,.72);
+}
+.hero-timeline { align-self: center; }
+
+@media (max-width: 900px) {
+  .hero-media { height: 46vh; min-height: 280px; }
+  .hero-media .hero-copy { grid-template-columns: auto 1fr; }
+}
+
+.hero-stage > .hero-copy {
+  position: static;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 22px;
+  align-items: end;
+  max-width: none;
+  padding: 0;
+  text-align: left;
+}
+.hero-stage > .hero-copy h1 { position: static; grid-row: span 2; margin: 0; font-size: clamp(54px, 7vw, 92px); }
+.hero-stage > .hero-copy > .eyebrow { position: static; margin: 0; color: #b8ff3d; font-size: 10px; }
+.hero-stage > .hero-copy .hero-line { position: static; max-width: 440px; margin: 0; color: #f3f7fb; font-size: clamp(17px, 1.8vw, 24px); font-weight: 650; }
+.hero-stage > .hero-copy .hero-status { position: absolute; left: 32px; bottom: 24px; max-width: 420px; margin: 0; color: #fff; font-size: 11px; text-shadow: 0 2px 14px rgba(0,0,0,.72); }
