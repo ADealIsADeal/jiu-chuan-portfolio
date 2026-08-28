@@ -187,21 +187,15 @@ nav a:hover {
 
 .hero-media .hero-copy h1 {
   position: absolute;
-  top: auto;
-  bottom: 44px;
+  top: 30px;
+  bottom: auto;
   left: 30px;
   margin: 0;
   font-size: clamp(58px, 8vw, 108px);
 }
 
 .hero-media .hero-copy > .eyebrow {
-  position: absolute;
-  left: 32px;
-  bottom: 22px;
-  margin: 0;
-  color: #ffffff;
-  font-size: 10px;
-  letter-spacing: .1em;
+  display: none;
 }
 
 .hero-media .hero-copy .eyebrow {
@@ -211,6 +205,7 @@ nav a:hover {
 
 .hero-media .hero-copy .hero-line {
   max-width: 440px;
+  margin-top: 146px;
   margin-bottom: 0;
   font-size: clamp(18px, 2vw, 26px);
   color: #ffffff;
@@ -219,6 +214,9 @@ nav a:hover {
 }
 
 .hero-media .hero-copy .hero-status {
+  position: absolute;
+  left: 32px;
+  bottom: 28px;
   max-width: 500px;
   margin-top: 12px;
   color: #ffffff;
