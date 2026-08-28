@@ -212,12 +212,12 @@ nav a:hover {
 
 .hero-media .hero-copy .hero-line {
   position: absolute;
-  top: calc(100% + 18px);
-  left: 0;
-  max-width: 440px;
+  top: 76px;
+  left: 210px;
+  max-width: 370px;
   margin: 0;
   margin-bottom: 0;
-  font-size: clamp(18px, 2vw, 26px);
+  font-size: clamp(16px, 1.7vw, 22px);
   color: #ffffff;
   font-weight: 650;
   text-shadow: 0 2px 14px rgba(0,0,0,.72);
