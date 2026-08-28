@@ -373,7 +373,9 @@ const cityFeatureRecords = geoFeatures.flatMap((provinceFeature) => {
     province,
   }));
 });
-const mapFeatures = cityFeatureRecords.map(({ feature }) => feature);
+const mapFeatures = cityFeatureRecords
+  .filter(({ province }) => province.name !== "南海诸岛")
+  .map(({ feature }) => feature);
 const geoBounds = getGeoBounds(mapFeatures.length ? mapFeatures : geoFeatures);
 const geoCenter = {
   lon: (geoBounds.minLon + geoBounds.maxLon) / 2,
@@ -614,6 +616,11 @@ cityFeatureRecords.forEach(({ feature, province }) => {
     isVisited,
     targetZ: 0,
   };
+
+  if (province.name === "南海诸岛") {
+    mesh.position.set(3.35, -2.55, 0);
+    mesh.scale.setScalar(0.52);
+  }
 
   const edge = new THREE.LineSegments(new THREE.EdgesGeometry(geometry), lineMaterial);
   mesh.add(edge);
