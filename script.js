@@ -3,8 +3,18 @@ import { chinaProvinceGeojson } from "./china-provinces-data.js";
 import { chinaCityMaps } from "./china-city-maps-data.js";
 
 const canvas = document.querySelector("#ambient-canvas");
+const pageLoader = document.querySelector("#page-loader");
+const heroVideo = document.querySelector(".hero-cg");
 const ctx = canvas.getContext("2d");
 const points = [];
+
+function hidePageLoader() {
+  pageLoader?.classList.add("is-hidden");
+}
+
+window.addEventListener("load", hidePageLoader, { once: true });
+heroVideo?.addEventListener("canplay", hidePageLoader, { once: true });
+setTimeout(hidePageLoader, 4200);
 
 function resizeCanvas() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
