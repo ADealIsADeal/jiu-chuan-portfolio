@@ -366,7 +366,8 @@ const cityFeatureRecords = geoFeatures.flatMap((provinceFeature) => {
     sourceName: provinceFeature.properties?.name || "南海诸岛",
     adcode: provinceFeature.properties?.adcode,
   };
-  const cityFeatures = chinaCityMaps[String(province.adcode)]?.features || [];
+  const municipality = ["北京", "上海", "天津", "重庆"].includes(province.name);
+  const cityFeatures = municipality ? [] : chinaCityMaps[String(province.adcode)]?.features || [];
   return (cityFeatures.length ? cityFeatures : [provinceFeature]).map((feature) => ({
     feature,
     province,
@@ -423,19 +424,19 @@ function createTextSprite(text, color = "#dce7ee", options = {}) {
   const fontSize = options.fontSize || 38;
   const labelCanvas = document.createElement("canvas");
   const labelCtx = labelCanvas.getContext("2d");
-  labelCanvas.width = 320;
-  labelCanvas.height = 96;
-  labelCtx.font = `800 ${fontSize}px PingFang SC, Microsoft YaHei, sans-serif`;
+  labelCanvas.width = 640;
+  labelCanvas.height = 192;
+  labelCtx.font = `800 ${fontSize * 2}px PingFang SC, Microsoft YaHei, sans-serif`;
   labelCtx.textAlign = "center";
   labelCtx.textBaseline = "middle";
   labelCtx.shadowColor = "rgba(0,0,0,0.88)";
-  labelCtx.shadowBlur = 18;
+  labelCtx.shadowBlur = 28;
   labelCtx.lineJoin = "round";
   labelCtx.strokeStyle = "rgba(2,8,12,0.86)";
-  labelCtx.lineWidth = 8;
-  labelCtx.strokeText(text, 160, 48);
+  labelCtx.lineWidth = 12;
+  labelCtx.strokeText(text, 320, 96);
   labelCtx.fillStyle = color;
-  labelCtx.fillText(text, 160, 48);
+  labelCtx.fillText(text, 320, 96);
 
   const texture = new THREE.CanvasTexture(labelCanvas);
   texture.anisotropy = 4;
