@@ -646,7 +646,7 @@ h3 {
   align-items: stretch;
 }
 
-.place-panel { display: none; }
+.place-panel { display: none !important; }
 
 .china-map {
   position: relative;
