@@ -219,8 +219,8 @@ nav a:hover {
 .hero-media .hero-copy .hero-status {
   position: absolute;
   left: 32px;
-  top: calc(100% + 78px);
-  bottom: auto;
+  top: auto;
+  bottom: 28px;
   max-width: 500px;
   margin-top: 12px;
   color: #ffffff;
