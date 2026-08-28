@@ -200,11 +200,20 @@ nav a:hover {
 
 .hero-media .hero-copy .hero-line {
   max-width: 440px;
+  margin-bottom: 0;
   font-size: clamp(18px, 2vw, 26px);
+  color: #f3f7fb;
+  font-weight: 650;
+  text-shadow: 0 2px 14px rgba(0,0,0,.72);
 }
 
 .hero-media .hero-copy .hero-status {
-  font-size: 11px;
+  max-width: 500px;
+  margin-top: 12px;
+  color: #e8f5fa;
+  font-size: 12px;
+  font-weight: 650;
+  text-shadow: 0 2px 14px rgba(0,0,0,.72);
 }
 
 .hero-media .hero-copy .hero-actions {
