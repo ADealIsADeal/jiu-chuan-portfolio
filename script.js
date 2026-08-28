@@ -366,7 +366,7 @@ const cityFeatureRecords = geoFeatures.flatMap((provinceFeature) => {
     sourceName: provinceFeature.properties?.name || "南海诸岛",
     adcode: provinceFeature.properties?.adcode,
   };
-  const municipality = ["北京", "上海", "天津", "重庆"].includes(province.name);
+  const municipality = ["北京", "上海", "天津", "重庆", "香港", "澳门"].includes(province.name);
   const cityFeatures = municipality ? [] : chinaCityMaps[String(province.adcode)]?.features || [];
   return (cityFeatures.length ? cityFeatures : [provinceFeature]).map((feature) => ({
     feature,
@@ -693,11 +693,13 @@ let hoveredMesh = null;
 function updateMainLabels() {
   const selectedProvince = selectedMesh?.userData.province.name;
   const zoomed = targetMapZoom < 10.9;
+  let baseLabelIndex = 0;
   mainLabelMeshes.forEach((label) => {
     const { cityName, provinceName } = label.userData;
     const shortName = normalizePlaceName(cityName);
     const visited = isVisitedCity(cityName, provinceName, visitedProvinceDetails[provinceName]);
-    label.visible = visited && (zoomed || shortName.length <= 3 || provinceName === selectedProvince);
+    const baseVisible = visited && (shortName.length <= 2 || provinceName === selectedProvince);
+    label.visible = visited && (zoomed || (baseVisible && baseLabelIndex++ % 2 === 0));
   });
 }
 
@@ -773,7 +775,7 @@ mapCanvas.addEventListener("wheel", (event) => {
   event.preventDefault();
   targetMapZoom = THREE.MathUtils.clamp(
     targetMapZoom + (event.deltaY > 0 ? 0.8 : -0.8),
-    8.4,
+    6.6,
     12.4
   );
 }, { passive: false });
