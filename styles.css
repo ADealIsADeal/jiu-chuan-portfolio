@@ -155,6 +155,10 @@ nav a:hover {
   box-shadow: 0 28px 90px rgba(0,0,0,.32), inset 0 0 60px rgba(105,230,255,.08);
 }
 
+.hero-stage {
+  min-width: 0;
+}
+
 .hero-media .hero-cg {
   position: relative;
   inset: auto;
@@ -166,6 +170,14 @@ nav a:hover {
   border-radius: 0;
   opacity: 1;
   mix-blend-mode: normal;
+}
+
+.hero-media .hero-copy {
+  position: absolute;
+  inset: auto 34px 34px;
+  max-width: 610px;
+  padding: 0;
+  text-shadow: 0 2px 18px rgba(0,0,0,.42);
 }
 
 .media-label {
