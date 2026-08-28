@@ -148,10 +148,10 @@ const renderer = new THREE.WebGLRenderer({
   canvas: mapCanvas,
   antialias: true,
   alpha: true,
+  powerPreference: "high-performance",
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
+renderer.shadowMap.enabled = false;
 
 const mapGroup = new THREE.Group();
 mapGroup.rotation.x = -0.2;
@@ -245,8 +245,9 @@ const cityRenderer = new THREE.WebGLRenderer({
   canvas: cityMapCanvas,
   antialias: true,
   alpha: true,
+  powerPreference: "high-performance",
 });
-cityRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+cityRenderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.25));
 
 const cityGroup = new THREE.Group();
 cityGroup.rotation.x = -0.28;
@@ -555,11 +556,8 @@ function renderCityMap(province, detail, fallbackFeature) {
     if (!shapes.length) return;
 
     const geometry = new THREE.ExtrudeGeometry(shapes, {
-      depth: 0.12,
-      bevelEnabled: true,
-      bevelThickness: 0.012,
-      bevelSize: 0.012,
-      bevelSegments: 2,
+      depth: 0.08,
+      bevelEnabled: false,
     });
     const mesh = new THREE.Mesh(
       geometry,
@@ -601,11 +599,8 @@ cityFeatureRecords.forEach(({ feature, province }) => {
   const cityName = feature.properties?.name || province.name;
   const isVisited = isVisitedCity(cityName, province.name, visitedProvinceDetails[province.name]);
   const geometry = new THREE.ExtrudeGeometry(shapes, {
-    depth: 0.18,
-    bevelEnabled: true,
-    bevelThickness: 0.018,
-    bevelSize: 0.018,
-    bevelSegments: 2,
+    depth: 0.1,
+    bevelEnabled: false,
   });
   geometry.computeBoundingBox();
 
