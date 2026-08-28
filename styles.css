@@ -148,7 +148,7 @@ nav a:hover {
   min-height: 72vh;
   display: grid;
   place-items: center;
-  overflow: hidden;
+  overflow: visible;
   border: 1px solid rgba(105,230,255,.24);
   border-radius: 18px;
   background: rgba(6, 16, 22, .48);
@@ -204,8 +204,11 @@ nav a:hover {
 }
 
 .hero-media .hero-copy .hero-line {
+  position: absolute;
+  top: calc(100% + 18px);
+  left: 0;
   max-width: 440px;
-  margin-top: 146px;
+  margin: 0;
   margin-bottom: 0;
   font-size: clamp(18px, 2vw, 26px);
   color: #ffffff;
@@ -216,7 +219,8 @@ nav a:hover {
 .hero-media .hero-copy .hero-status {
   position: absolute;
   left: 32px;
-  bottom: 28px;
+  top: calc(100% + 78px);
+  bottom: auto;
   max-width: 500px;
   margin-top: 12px;
   color: #ffffff;
