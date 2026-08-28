@@ -133,6 +133,10 @@ nav a:hover {
 }
 
 .hero {
+  width: 100%;
+  max-width: none;
+  padding-left: clamp(20px, 4vw, 64px);
+  padding-right: clamp(20px, 4vw, 64px);
   min-height: 100vh;
   height: 100vh;
   isolation: isolate;
@@ -140,7 +144,7 @@ nav a:hover {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(280px, .62fr);
+  grid-template-columns: minmax(0, 1.65fr) minmax(250px, .48fr);
   align-items: center;
   padding-top: 132px;
 }
